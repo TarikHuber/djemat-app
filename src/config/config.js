@@ -16,30 +16,30 @@ const LPAsync = Loadable({
 
 const config = {
   firebase_config: {
-    apiKey: 'AIzaSyBQAmNJ2DbRyw8PqdmNWlePYtMP0hUcjpY',
-    authDomain: 'react-most-wanted-3b1b2.firebaseapp.com',
-    databaseURL: 'https://react-most-wanted-3b1b2.firebaseio.com',
-    projectId: 'react-most-wanted-3b1b2',
-    storageBucket: 'react-most-wanted-3b1b2.appspot.com',
-    messagingSenderId: '258373383650',
-    appId: '1:258373383650:web:b49ad5dd28da999a'
+    apiKey: 'AIzaSyDIkh6OV5ZxvpHoyhsGmX8tPM81ykAnMv0',
+    authDomain: 'djemat-app.firebaseapp.com',
+    databaseURL: 'https://djemat-app.firebaseio.com',
+    projectId: 'djemat-app',
+    storageBucket: 'djemat-app.appspot.com',
+    messagingSenderId: '743209498025',
+    appId: '1:743209498025:web:c97b5b9d231d3c07'
   },
   firebase_config_dev: {
-    apiKey: 'AIzaSyB31cMH9nJnERC1WCWA7lQHnY08voLs-Z0',
-    authDomain: 'react-most-wanted-dev.firebaseapp.com',
-    databaseURL: 'https://react-most-wanted-dev.firebaseio.com',
-    projectId: 'react-most-wanted-dev',
-    storageBucket: 'react-most-wanted-dev.appspot.com',
-    messagingSenderId: '70650394824',
-    appId: '1:70650394824:web:7cd3113c37741efc'
+    apiKey: 'AIzaSyDIkh6OV5ZxvpHoyhsGmX8tPM81ykAnMv0',
+    authDomain: 'djemat-app.firebaseapp.com',
+    databaseURL: 'https://djemat-app.firebaseio.com',
+    projectId: 'djemat-app',
+    storageBucket: 'djemat-app.appspot.com',
+    messagingSenderId: '743209498025',
+    appId: '1:743209498025:web:c97b5b9d231d3c07'
   },
-  firebase_providers: ['google.com', 'facebook.com', 'twitter.com', 'github.com', 'password', 'phone'],
+  firebase_providers: ['google.com', 'password'],
   initial_state: {
     themeSource: {
       isNightModeOn: true,
-      source: 'light'
+      source: 'default'
     },
-    locale: 'en'
+    locale: 'bs'
   },
   drawer_width: 256,
   locales,

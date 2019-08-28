@@ -1,13 +1,12 @@
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import Brightness2 from '@material-ui/icons/Brightness2'
 import Brightness7 from '@material-ui/icons/Brightness7'
-import Business from '@material-ui/icons/Business'
 import ChatIcon from '@material-ui/icons/Chat'
 import DaschboardIcon from '@material-ui/icons/Dashboard'
+import Group from '@material-ui/icons/Group'
 import GroupIcon from '@material-ui/icons/Group'
 import InfoOutlined from '@material-ui/icons/InfoOutlined'
 import LanguageIcon from '@material-ui/icons/Language'
-import ListIcon from '@material-ui/icons/List'
 import LockIcon from '@material-ui/icons/Lock'
 import PersonIcon from '@material-ui/icons/Person'
 import React from 'react'
@@ -104,17 +103,12 @@ const getMenuItems = props => {
         }
       ]
     },
+
     {
-      value: '/companies',
-      visible: isGranted('read_companies'),
-      primaryText: intl.formatMessage({ id: 'companies' }),
-      leftIcon: <Business />
-    },
-    {
-      value: '/tasks',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({ id: 'tasks' }),
-      leftIcon: <ListIcon />
+      value: '/members',
+      visible: isGranted('read_members'),
+      primaryText: intl.formatMessage({ id: 'members' }),
+      leftIcon: <Group />
     },
     {
       value: '/about',

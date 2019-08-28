@@ -1,4 +1,4 @@
-import { defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl'
 
 const messages = defineMessages({
   app_name: 'React Most Wanted',
@@ -145,7 +145,11 @@ const messages = defineMessages({
   document: 'Document',
   collection: 'Collection',
   infinitelist: 'Infinitelist',
+  members: 'Members',
+  create_member: 'Create member',
+  edit_member: 'Edit member',
+  delete_member_title: 'Delete member?',
+  delete_member_message: 'The member will be deleted!'
+})
 
-});
-
-export default messages;
+export default messages

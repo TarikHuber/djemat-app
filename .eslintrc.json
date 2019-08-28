@@ -19,12 +19,13 @@
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
-    "react/prop-types": [1],
-    "no-console": "warn",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      }
+    "react/prop-types": [0],
+    "no-console": "warn"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
     }
   }
 }

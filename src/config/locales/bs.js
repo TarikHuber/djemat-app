@@ -144,7 +144,12 @@ const messages = defineMessages({
   user_label_search: 'Search user',
   document: 'Document',
   collection: 'Collection',
-  infinitelist: 'Infinitelist'
+  infinitelist: 'Infinitelist',
+  members: 'Clanovi',
+  create_member: 'Dodaj clan',
+  edit_member: 'Obradi clan',
+  delete_member_title: 'Obrisi clan?',
+  delete_member_message: 'Clan i svi njegoci podaci ce briti izbrisani!'
 })
 
 export default messages
