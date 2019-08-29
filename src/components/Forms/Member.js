@@ -1,5 +1,11 @@
 import AvatarImageField from 'rmw-shell/lib/components/ReduxFormFields/AvatarImageField'
 import Business from '@material-ui/icons/Business'
+import Checkbox from 'rmw-shell/lib/components/ReduxFormFields/Checkbox'
+import DateField from 'rmw-shell/lib/components/ReduxFormFields/DateField'
+import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormLabel from '@material-ui/core/FormLabel'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import TextField from 'rmw-shell/lib/components/ReduxFormFields/TextField'
@@ -43,50 +49,127 @@ class Form extends Component {
             path={'companies'}
           />
 
-          <div>
-            <Field
-              name="name"
-              disabled={!initialized}
-              component={TextField}
-              placeholder={intl.formatMessage({ id: 'name_hint' })}
-              label={intl.formatMessage({ id: 'name_label' })}
-            />
-          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', margin: 15 }}>
+              <Field
+                name="name"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'name_label' })}
+              />
+              <br />
+              <Field
+                name="surname"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'surname_label' })}
+              />
+              <br />
+              <Field
+                name="father_name"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'father_name_label' })}
+              />
 
-          <div>
-            <Field
-              name="full_name"
-              disabled={!initialized}
-              component={TextField}
-              placeholder={intl.formatMessage({ id: 'full_name_hint' })}
-              label={intl.formatMessage({ id: 'full_name_label' })}
-            />
-          </div>
+              <br />
+              <Field
+                name="birthdate"
+                variant="outlined"
+                label={intl.formatMessage({ id: 'birthdate_label' })}
+                disabled={!initialized}
+                component={DateField}
+              />
+              <br />
+              <Field
+                name="birthplace"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'birthplace_label' })}
+              />
+              <br />
+              <Field
+                name="birthpland"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'birthpland_label' })}
+              />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', margin: 15 }}>
+              <Field
+                name="street"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'street_label' })}
+              />
+              <br />
+              <Field
+                name="zip"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'zip_label' })}
+              />
+              <br />
+              <Field
+                name="place"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'place_label' })}
+              />
+              <br />
+              <Field
+                name="country"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'country_label' })}
+              />
+              <br />
+              <Field
+                name="phone"
+                variant="outlined"
+                disabled={!initialized}
+                component={TextField}
+                label={intl.formatMessage({ id: 'phone_label' })}
+              />
+              <br />
+            </div>
 
-          <div>
-            <Field
-              name="vat"
-              disabled={!initialized}
-              component={TextField}
-              placeholder={intl.formatMessage({ id: 'vat_hint' })}
-              label={intl.formatMessage({ id: 'vat_label' })}
-            />
-          </div>
-
-          <div>
-            <Field
-              name="description"
-              disabled={!initialized}
-              component={TextField}
-              multiline
-              rows={2}
-              placeholder={intl.formatMessage({ id: 'description_hint' })}
-              label={intl.formatMessage({ id: 'description_label' })}
-            />
+            <div style={{ display: 'flex', flexDirection: 'column', margin: 15 }}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Pick two</FormLabel>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Field name="isStudent" component={Checkbox} />}
+                    label={intl.formatMessage({ id: 'isStudent_label' })}
+                  />
+                  <FormControlLabel
+                    control={<Field name="isRetired" component={Checkbox} />}
+                    label={intl.formatMessage({ id: 'isRetired_label' })}
+                  />
+                  <FormControlLabel
+                    control={<Field name="isSingleParent" component={Checkbox} />}
+                    label={intl.formatMessage({ id: 'isSingleParent_label' })}
+                  />
+                  <FormControlLabel
+                    control={<Field name="isDistanceOver30Km" component={Checkbox} />}
+                    label={intl.formatMessage({ id: 'isDistanceOver30Km_label' })}
+                  />
+                </FormGroup>
+              </FormControl>
+            </div>
           </div>
 
           <ImageCropDialog
-            path={`companies/${uid}`}
+            path={`members/${uid}`}
             fileName={'photoURL'}
             onUploadSuccess={s => {
               this.handlePhotoUploadSuccess(s)
@@ -94,7 +177,7 @@ class Form extends Component {
             open={dialogs.new_company_photo !== undefined}
             src={dialogs.new_company_photo}
             handleClose={() => {
-              setDialogIsOpen('new_company_photo', undefined)
+              setDialogIsOpen('new_member_photo', undefined)
             }}
             title={intl.formatMessage({ id: 'change_photo' })}
           />

@@ -150,7 +150,7 @@ const LandingPage = ({ classes, history, theme }) => {
         <meta name="theme-color" content={theme.palette.primary.main} />
         <meta name="apple-mobile-web-app-status-bar-style" content={theme.palette.primary.main} />
         <meta name="msapplication-navbutton-color" content={theme.palette.primary.main} />
-        <title>REACT MOST WANTED</title>
+        <title>Djemat Salzburg</title>
       </Helmet>
       <AppBar position="static">
         <Toolbar disableGutters>
@@ -197,10 +197,10 @@ const LandingPage = ({ classes, history, theme }) => {
                 gutterBottom
                 className={classes.title}
               >
-                {'REACT MOST WANTED'}
+                {'Djemat Salzburg'}
               </Typography>
               <Typography variant="h5" component="h2" color="inherit" gutterBottom className={classes.h5}>
-                {'React Starter-Kit with all Most Wanted features.'}
+                {'Dobrodosli na officielnu aplikaciju djemata Salzburg.'}
               </Typography>
               <Button
                 onClick={() => {
@@ -210,7 +210,7 @@ const LandingPage = ({ classes, history, theme }) => {
                 variant="outlined"
                 color="primary"
               >
-                {'Get Started'}
+                {'Pocni'}
               </Button>
             </div>
 
