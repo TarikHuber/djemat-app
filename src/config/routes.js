@@ -23,7 +23,7 @@ const routes = [
   <RestrictedRoute type="private" path="/companies/edit/:uid" exact component={AsyncCompany} />,
   <RestrictedRoute type="private" path="/companies/create" exact component={AsyncCompany} />,
   <RestrictedRoute type="private" path="/members" exact component={AsyncMembers} />,
-  <RestrictedRoute type="private" path="/members/edit/:uid" exact component={AsyncMember} />,
+  <RestrictedRoute type="private" path="/members/edit/:uid/:editType" exact component={AsyncMember} />,
   <RestrictedRoute type="private" path="/members/create" exact component={AsyncMember} />,
   <RestrictedRoute type="private" path="/tasks" exact component={AsyncTasks} />,
   <RestrictedRoute type="private" path="/tasks/create" exact component={AsyncTask} />,

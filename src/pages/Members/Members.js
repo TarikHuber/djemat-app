@@ -19,7 +19,7 @@ const Members = props => {
 
     return (
       <div key={key}>
-        <ListItem onClick={() => history.push(`/members/edit/${key}`)} key={key}>
+        <ListItem onClick={() => history.push(`/members/edit/${key}/data`)} key={key}>
           <AltIconAvatar alt="member" src={val.photoURL} icon={<Person />} />
           <ListItemText
             primary={`${name} ${surname}`}
