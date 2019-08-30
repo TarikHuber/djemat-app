@@ -6,7 +6,11 @@ export const grants = [
   'create_member',
   'edit_member',
   'delete_member',
-  'read_members'
+  'read_members',
+  'create_payment',
+  'edit_payment',
+  'delete_payment',
+  'read_payments'
 ]
 
 export default grants

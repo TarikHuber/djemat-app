@@ -1,18 +1,24 @@
 import Add from '@material-ui/icons/Add'
+import AltIconAvatar from 'rmw-shell/lib/components/AltIconAvatar'
 import AvatarImageField from 'rmw-shell/lib/components/ReduxFormFields/AvatarImageField'
 import Business from '@material-ui/icons/Business'
-import Delete from '@material-ui/icons/Delete'
 import Checkbox from 'rmw-shell/lib/components/ReduxFormFields/Checkbox'
 import DateField from 'rmw-shell/lib/components/ReduxFormFields/DateField'
+import Delete from '@material-ui/icons/Delete'
+import Divider from '@material-ui/core/Divider'
 import Fab from '@material-ui/core/Fab'
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormLabel from '@material-ui/core/FormLabel'
 import IconButton from '@material-ui/core/IconButton'
+import ListItemText from '@material-ui/core/ListItemText'
+import MenuItem from '@material-ui/core/MenuItem'
+import Person from '@material-ui/icons/Person'
 import React from 'react'
 import TextField from 'rmw-shell/lib/components/ReduxFormFields/TextField'
 import { Field, FieldArray, reduxForm } from 'redux-form'
+import { VirtualizedSelectField } from 'muishift'
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router-dom'
 import { withTheme } from '@material-ui/core/styles'
@@ -23,7 +29,7 @@ const renderChild = ({ fields, intl }) => {
       {fields.map((children, index) => (
         <div key={index} style={{ marginBottom: 20 }}>
           <Field
-            style={{ marginBottom: 9 }}
+            style={{ marginBottom: 12 }}
             name={`${children}.fullName`}
             variant="outlined"
             component={TextField}
@@ -37,8 +43,10 @@ const renderChild = ({ fields, intl }) => {
             name={`${children}.birthday`}
             variant="outlined"
             component={DateField}
+            style={{ marginBottom: 9 }}
             label={intl.formatMessage({ id: 'birthday_label' })}
           />
+          <Divider />
         </div>
       ))}
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -53,7 +61,7 @@ const renderChild = ({ fields, intl }) => {
 const renderChildren = injectIntl(renderChild)
 
 const Form = props => {
-  const { handleSubmit, intl, initialized, match } = props
+  const { handleSubmit, intl, initialized, match, users, handleUserSelected } = props
 
   const uid = match.params.uid
 
@@ -80,19 +88,21 @@ const Form = props => {
       <button type="submit" style={{ display: 'none' }} />
 
       <div style={{ margin: 15, display: 'flex', flexDirection: 'column' }}>
-        <AvatarImageField
-          name="photoURL"
-          disabled={!initialized}
-          uid={uid}
-          change={props.change}
-          initialized={initialized}
-          icon={<Business fontSize="large" />}
-          intl={intl}
-          path={'members'}
-        />
-
         <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%', justifyContent: 'center' }}>
           <div style={blockStyle}>
+            <AvatarImageField
+              name="photoURL"
+              disabled={!initialized}
+              uid={uid}
+              change={props.change}
+              initialized={initialized}
+              icon={<Business fontSize="large" />}
+              intl={intl}
+              path={'members'}
+            />
+            <br />
+            <br />
+            <br />
             <FormLabel component="legend">{intl.formatMessage({ id: 'main_data_label' })}</FormLabel>
             <br />
             <Field
@@ -144,6 +154,8 @@ const Form = props => {
               label={intl.formatMessage({ id: 'birthpland_label' })}
             />
             <br />
+          </div>
+          <div style={blockStyle}>
             <FormControl component="fieldset">
               <FormGroup>
                 <FormControlLabel
@@ -164,10 +176,48 @@ const Form = props => {
                 />
               </FormGroup>
             </FormControl>
-          </div>
-          <div style={blockStyle}>
+            <br />
+            <div>
+              <Field
+                name="user"
+                rowHeight={54}
+                onChange={handleUserSelected}
+                component={VirtualizedSelectField}
+                variant="outlined"
+                items={users.map(snap =>
+                  snap && snap.val
+                    ? {
+                      value: snap.key,
+                      label: snap.val.displayName,
+                      photoURL: snap.val.photoURL ? snap.val.photoURL : null
+                    }
+                    : null
+                )}
+                itemToString={item => (item ? item.label : '')}
+                inputProps={{
+                  placeholder: intl.formatMessage({ id: 'user_hint' }),
+                  label: intl.formatMessage({ id: 'user_label' }),
+                  variant: 'outlined',
+                  fullWidth: true
+                }}
+                renderSuggestion={({ rootProps, downshiftProps, suggestion, index }) => {
+                  const { getItemProps, highlightedIndex } = downshiftProps
+                  const itemProps = getItemProps({ item: suggestion })
+                  const isHighlighted = highlightedIndex === index
+                  return (
+                    <MenuItem {...itemProps} selected={isHighlighted} key={index}>
+                      <AltIconAvatar alt="avatar" src={suggestion.photoURL} icon={<Person />} />
+                      <ListItemText primary={suggestion.label} />
+                    </MenuItem>
+                  )
+                }}
+              />
+            </div>
+            <br />
+
             <FormLabel component="legend">{intl.formatMessage({ id: 'kontakt_label' })}</FormLabel>
             <br />
+
             <Field
               name="street"
               variant="outlined"

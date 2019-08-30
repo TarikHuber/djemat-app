@@ -98,6 +98,14 @@
         ".write": "(auth != null && root.child('admins/'+auth.uid).exists()) || (data.exists() && newData.exists() && root.child('user_grants/'+auth.uid+'/edit_member').exists()) || (!data.exists() && newData.exists() && root.child('user_grants/'+auth.uid+'/create_member').exists()) || (data.exists() && !newData.exists() && root.child('user_grants/'+auth.uid+'/delete_member').exists())"
       }
     },
+    "payments": {
+      ".read": "(auth != null && root.child('admins/'+auth.uid).exists()) || root.child('user_grants/'+auth.uid+'/read_payments').exists()",
+      "$memberUid": {
+        "$uid": {
+          ".write": "(auth != null && root.child('admins/'+auth.uid).exists()) || (data.exists() && newData.exists() && root.child('user_grants/'+auth.uid+'/edit_payment').exists()) || (!data.exists() && newData.exists() && root.child('user_grants/'+auth.uid+'/create_payments').exists()) || (data.exists() && !newData.exists() && root.child('user_grants/'+auth.uid+'/delete_payment').exists())"
+        }
+      }
+    },
     "public_chats": {
       ".read": "auth != null",
       ".write": "auth != null"

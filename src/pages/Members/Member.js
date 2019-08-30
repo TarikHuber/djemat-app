@@ -23,11 +23,25 @@ import { setSimpleValue } from 'rmw-shell/lib/store/simpleValues/actions'
 import { withFirebase } from 'firekit-provider'
 import { withRouter } from 'react-router-dom'
 import { withTheme } from '@material-ui/core/styles'
+import Payments from '../../containers/Payments/Payments'
+import { getList } from 'firekit'
 
 const name = 'member'
 const path = 'members'
 
 class WarehouseTask extends Component {
+  componentDidMount() {
+    const { watchList } = this.props
+    watchList('users')
+  }
+
+  handleUserSelected = (e, value) => {
+    const { change } = this.props
+    const { photoURL } = value ? value : {}
+
+    change(name, 'photoURL', photoURL)
+  }
+
   handleDelete = async handleClose => {
     const { history, match, firebaseApp } = this.props
     const uid = match.params.uid
@@ -137,6 +151,7 @@ class WarehouseTask extends Component {
                 path={`/${path}/`}
                 uid={match.params.uid}
                 onSubmitSuccess={this.hanldeSubmitSuccess}
+                handleUserSelected={this.handleUserSelected}
                 {...this.props}
               >
                 <Form />
@@ -144,7 +159,11 @@ class WarehouseTask extends Component {
             </Scrollbar>
           )}
 
-          {editType === 'Euro' && <div />}
+          {editType === 'payments' && (
+            <Scrollbar style={{ height: 'calc(100vh - 112px)' }}>
+              <Payments {...this.props} />
+            </Scrollbar>
+          )}
         </div>
         <DeleteDialog name={name} handleDelete={this.handleDelete} />
       </Activity>
@@ -165,6 +184,7 @@ const mapStateToProps = (state, ownProps) => {
     auth,
     intl,
     isDirty: isDirty(name)(state),
+    users: getList(state, 'users'),
     isGranted: grant => isGranted(state, grant)
   }
 }
